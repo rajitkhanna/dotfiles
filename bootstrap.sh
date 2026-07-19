@@ -11,6 +11,11 @@
 #   ./bootstrap.sh --tools    # only CLI tools
 #   ./bootstrap.sh --dotfiles # only symlink configs
 #   ./bootstrap.sh --skills   # only agent skills
+#   ./bootstrap.sh --safe     # merge config into existing ~/.zshrc (no overwrite)
+#
+# On Linux, --dotfiles replaces ~/.zshrc with the captured snapshot (after
+# backing it up). Pass --safe to instead append only the missing blocks, so
+# your live ~/.zshrc is never overwritten.
 #
 # Safe to re-run. Idempotent where possible.
 
@@ -38,10 +43,15 @@ for a in "$@"; do
     --tools)    DO_DOTFILES=0; DO_SKILLS=0 ;;
     --dotfiles) DO_TOOLS=0; DO_SKILLS=0 ;;
     --skills)   DO_TOOLS=0; DO_DOTFILES=0 ;;
+    --safe)     SAFE_MERGE=1 ;;
     -h|--help)  sed -n '3,20p' "$0"; exit 0 ;;
     *) warn "unknown arg: $a" ;;
   esac
 done
+
+# SAFE_MERGE: append only missing config blocks to the EXISTING ~/.zshrc
+# instead of replacing it with the captured snapshot. Off by default.
+SAFE_MERGE="${SAFE_MERGE:-0}"
 
 OS="$(uname -s)"
 case "$OS" in
@@ -180,14 +190,41 @@ if [[ "$DO_DOTFILES" -eq 1 ]]; then
     link "$REPO_ROOT/.agents" "$HOME/.agents"
   else
     # Linux/droplet layout: XDG_CONFIG_HOME points at repo .config.
-    link "$REPO_ROOT/host/zshrc.droplet" "$HOME/.zshrc"
     link "$REPO_ROOT/host/tmux.conf.droplet" "$HOME/.tmux.conf"
     link "$REPO_ROOT/host/p10k.zsh.droplet" "$HOME/.p10k.zsh"
     link "$REPO_ROOT/host/fzf-git.sh" "$HOME/fzf-git.sh/fzf-git.sh"
     link "$REPO_ROOT/host/opencode-AGENTS.md" "$HOME/.config/opencode/AGENTS.md"
-    # Point XDG at the repo so all .config/* apps resolve.
-    grep -q "XDG_CONFIG_HOME" "$HOME/.zshrc" || \
-      echo "export XDG_CONFIG_HOME=\"$REPO_ROOT/.config\"" >> "$HOME/.zshrc"
+
+    if [[ "$SAFE_MERGE" -eq 1 ]]; then
+      # Don't replace the live ~/.zshrc. Append only the blocks that are
+      # missing, so the existing config is preserved.
+      log "safe-merge: appending missing blocks to existing ~/.zshrc"
+      ZRC="$HOME/.zshrc"
+      grep -q "XDG_CONFIG_HOME" "$ZRC" || \
+        echo "export XDG_CONFIG_HOME=\"$REPO_ROOT/.config\"" >> "$ZRC"
+      grep -q "fzf-git.sh" "$ZRC" || \
+        echo "source $HOME/fzf-git.sh/fzf-git.sh" >> "$ZRC"
+      grep -q "powerlevel10k.zsh-theme" "$ZRC" || \
+        echo "source ~/powerlevel10k/powerlevel10k.zsh-theme" >> "$ZRC"
+      grep -q "zsh-autosuggestions.zsh" "$ZRC" || \
+        echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> "$ZRC"
+      grep -q "zsh-syntax-highlighting.zsh" "$ZRC" || \
+        echo "source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$ZRC"
+      grep -q "zoxide init" "$ZRC" || \
+        echo 'eval "$(zoxide init zsh)"; alias cd="z"' >> "$ZRC"
+      grep -q 'alias ls="eza' "$ZRC" || \
+        echo 'alias ls="eza --icons=always"' >> "$ZRC"
+      ok "merged blocks into $ZRC"
+    else
+      # Replace with the captured, known-good snapshot (backs up the live one
+      # first so nothing is lost).
+      if [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]]; then
+        cp -f "$HOME/.zshrc" "$HOME/.zshrc.pre-bootstrap.$(date +%s).bak"
+        warn "backed up existing ~/.zshrc before replacing"
+      fi
+      link "$REPO_ROOT/host/zshrc.droplet" "$HOME/.zshrc"
+    fi
+
     # skills symlink (skills -> .agents/skills)
     link "$REPO_ROOT/.agents" "$HOME/.agents"
   fi

@@ -3,20 +3,18 @@
 Skills used by openCode / agents, vendored under `.agents/skills/` and tracked
 via `skills-lock.json` (reproducible install). Symlinked as `skills -> .agents/skills`.
 
-## Typically used
+## Tracked (actually used)
 
 | Skill | Source | Notes |
 |-------|--------|-------|
-| `gws-gmail` | github `googleworkspace/cli` | Gmail send/read |
-| `gws-drive` | github `googleworkspace/cli` | Google Drive |
-| `playwriter` | github `remorses/playwriter` | Browser automation via your Chrome |
 | `find-docs` | vendored | Library/framework docs lookup |
-| `company-research` | vendored | Exa company research |
-| `exa-lead-gen` | vendored | Lead list generation |
-| `people-research` | vendored | Exa people research |
-| `yc-cli` | vendored | YC Bookface CLI |
-| `remarkable-ssh-sync` | vendored | reMarkable tablet sync |
-| `playwright-cli` | vendored | Playwright MCP QA |
+| `playwriter` | github `remorses/playwriter` | Browser automation via your Chrome |
+| `circleback` | vendored | Meeting notes / follow-ups |
+
+## Dropped (intentionally)
+
+`gws-gmail`, `gws-drive` (not working yet), `yc-cli`, `remarkable-ssh-sync`,
+`playwright-cli`. Restore from git history if needed.
 
 ## Install
 

@@ -23,6 +23,16 @@ exec zsh
 
 Targeted runs: `./bootstrap.sh --tools`, `--dotfiles`, `--skills`.
 
+On **Linux**, `--dotfiles` replaces `~/.zshrc` with the captured snapshot (it
+backs up the live file first). To avoid overwriting your current shell config,
+pass `--safe` — it appends only the missing blocks (XDG path, p10k sources,
+zoxide/eza aliases, fzf-git) to your existing `~/.zshrc`:
+
+```bash
+./bootstrap.sh --safe          # full install, but merge into ~/.zshrc
+./bootstrap.sh --safe --dotfiles   # only merge the dotfiles blocks
+```
+
 ## CLI software
 
 Installed by `bootstrap.sh`:
@@ -72,8 +82,19 @@ from the repo directly.
 
 ## Agent skills
 
+Only the skills I actually use are tracked (the rest are intentionally dropped):
+
+| Skill | Source | Notes |
+|-------|--------|-------|
+| `find-docs` | vendored | Library/framework docs lookup |
+| `playwriter` | github `remorses/playwriter` | Browser automation via your Chrome |
+| `circleback` | vendored | Meeting notes / follow-ups |
+
 See [SKILLS.md](SKILLS.md). Vendored under `.agents/skills/`, tracked by
 `skills-lock.json`, symlinked as `skills`.
+
+> gws-gmail/gws-drive, yc-cli, remarkable-ssh-sync, playwright-cli were removed
+> (not working / not needed). Re-add from `skills-lock.json` history if wanted.
 
 ## Credits
 

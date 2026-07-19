@@ -12,7 +12,7 @@
       "headers": {
         "CONTEXT7_API_KEY": "ctx7sk-115c60af-93d5-45a7-b261-5a2f48a3b1ca"
       },
-      "enabled": true
+      "enabled": false
     },
     "nia": {
       "type": "remote",
@@ -22,14 +22,35 @@
       },
       "enabled": false
     },
-    "gh_grep": {
-      "type": "remote",
-      "url": "https://mcp.grep.app",
-      "enabled": false
-    },
     "exa": {
       "type": "remote",
       "url": "https://mcp.exa.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer 58917652-3123-4713-9db1-006c55277b63"
+      },
+      "enabled": false
+    },
+    "remarkable": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--with",
+        "rmc",
+        "--with",
+        "cairosvg",
+        "remarkable-mcp",
+        "--ssh"
+      ],
+      "environment": {
+        "REMARKABLE_SSH_HOST": "remarkable",
+        "REMARKABLE_OCR_BACKEND": "google",
+        "GOOGLE_VISION_API_KEY": "AIzaSyCZ3jrEHjdqb38THIF_CZwptQjhYAsUIfc"
+      },
+      "enabled": false
+    },
+    "circleback": {
+      "type": "remote",
+      "url": "https://app.circleback.ai/api/mcp",
       "enabled": true
     }
   },
@@ -50,7 +71,11 @@
   },
   "permission": {
     "external_directory": {
-      "~/Github/**": "allow"
+      "~/Github/**": "allow",
+      "~/tmp/**": "allow"
     }
-  }
+  },
+  "plugin": [
+    "@honcho-ai/opencode-honcho"
+  ]
 }
