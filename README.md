@@ -56,7 +56,7 @@ Installed by `bootstrap.sh`:
 | `rclone` | cloud sync |
 | `atuin` / `starship` | shell history / prompt (macOS) |
 | `zsh` + powerlevel10k + autosuggest + syntax-highlight | shell |
-| `node` (LTS) + `npm` globals: `opencode-ai`, `ctx7`, `vercel` | JS tooling |
+| `node` (LTS) + `npm` globals: `opencode-ai`, `ctx7`, `vercel`, `@circleback/cli` | JS tooling |
 | `python3` + pip/venv, `cmake`, `ninja`, Rust (`cargo`) | build toolchains |
 | `ffmpeg`, `tesseract-ocr`, `xclip`/`xsel` | media / clipboard |
 
@@ -88,7 +88,7 @@ Only the skills I actually use are tracked (the rest are intentionally dropped):
 |-------|--------|-------|
 | `find-docs` | vendored | Library/framework docs lookup |
 | `playwriter` | github `remorses/playwriter` | Browser automation via your Chrome |
-| `circleback` | vendored | Meeting notes / follow-ups |
+| `circleback` | vendored | Meeting notes / follow-ups (via `@circleback/cli`) |
 
 See [SKILLS.md](SKILLS.md). Vendored under `.agents/skills/`, tracked by
 `skills-lock.json`, symlinked as `skills`.

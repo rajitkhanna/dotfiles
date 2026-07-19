@@ -147,10 +147,10 @@ if [[ "$DO_TOOLS" -eq 1 ]]; then
     fi
   fi
 
-  # npm globals (openCode CLI, ctx7 docs, vercel).
+  # npm globals (openCode CLI, ctx7 docs, vercel, circleback CLI).
   if command -v npm >/dev/null 2>&1; then
     log "installing npm globals"
-    npm install -g opencode-ai ctx7 vercel 2>/dev/null || warn "npm global install failed (network?)"
+    npm install -g opencode-ai ctx7 vercel @circleback/cli 2>/dev/null || warn "npm global install failed (network?)"
   fi
 
   # fzf-git.sh key bindings.

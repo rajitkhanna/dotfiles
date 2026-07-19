@@ -14,22 +14,6 @@
       },
       "enabled": false
     },
-    "nia": {
-      "type": "remote",
-      "url": "https://apigcp.trynia.ai/mcp",
-      "headers": {
-        "Authorization": "Bearer nk_DjdmYgJFoapbEFHY5z6p6u33LOwk3NAU"
-      },
-      "enabled": false
-    },
-    "exa": {
-      "type": "remote",
-      "url": "https://mcp.exa.ai/mcp",
-      "headers": {
-        "Authorization": "Bearer 58917652-3123-4713-9db1-006c55277b63"
-      },
-      "enabled": false
-    },
     "remarkable": {
       "type": "local",
       "command": [
@@ -47,11 +31,6 @@
         "GOOGLE_VISION_API_KEY": "AIzaSyCZ3jrEHjdqb38THIF_CZwptQjhYAsUIfc"
       },
       "enabled": false
-    },
-    "circleback": {
-      "type": "remote",
-      "url": "https://app.circleback.ai/api/mcp",
-      "enabled": true
     }
   },
   "instructions": [
