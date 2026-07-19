@@ -4,7 +4,8 @@ One-command environment bootstrap for a new machine — CLI toolchain, agent
 skills, fonts, and all configs (neovim, yazi, tmux, wezterm, sketchybar, yabai,
 opencode, lazygit, gh, etc.).
 
-Modeled heavily on [josean-dev/dev-environment-files](https://github.com/josean-dev/dev-environment-files).
+Heavily modeled on [Josean Martinez's dev-environment-files](https://github.com/josean-dev/dev-environment-files)
+— same structure and bootstrap approach. Go star his repo.
 
 ## Quick start
 
@@ -98,7 +99,7 @@ See [SKILLS.md](SKILLS.md). Vendored under `.agents/skills/`, tracked by
 
 ## Credits
 
-- [josean-dev/dev-environment-files](https://github.com/josean-dev/dev-environment-files)
-  — structure/approach this repo follows.
+- [Josean Martinez — dev-environment-files](https://github.com/josean-dev/dev-environment-files)
+  — the structure and bootstrap approach this repo is built on. Go star it.
 - [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - [marverix/gah](https://github.com/marverix/gah) — prebuilt binary installer.
