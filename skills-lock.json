@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "skills": {
+    "gws-drive": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "computedHash": "d637ff849b82a9fc195bcfedea260cffe94eaa31b843b28cd04313b1720bb153"
+    },
+    "gws-gmail": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "computedHash": "5e5b5fdb4b4f347310d929657ed773abcaf528b5ac0a68deee12d3d38d307642"
+    },
+    "playwriter": {
+      "source": "remorses/playwriter",
+      "sourceType": "github",
+      "computedHash": "0bc049738095d117531cc6e4e461d55a432d0d8000b3279d76d47891e55c7152"
+    },
+    "find-docs": {
+      "source": "vendored",
+      "sourceType": "local",
+      "path": ".agents/skills/find-docs"
+    },
+    "company-research": {
+      "source": "vendored",
+      "sourceType": "local",
+      "path": ".agents/skills/company-research"
+    },
+    "exa-lead-gen": {
+      "source": "vendored",
+      "sourceType": "local",
+      "path": ".agents/skills/exa-lead-gen"
+    },
+    "people-research": {
+      "source": "vendored",
+      "sourceType": "local",
+      "path": ".agents/skills/people-research"
+    },
+    "yc-cli": {
+      "source": "vendored",
+      "sourceType": "local",
+      "path": ".agents/skills/yc-cli"
+    },
+    "remarkable-ssh-sync": {
+      "source": "vendored",
+      "sourceType": "local",
+      "path": ".agents/skills/remarkable-ssh-sync"
+    },
+    "playwright-cli": {
+      "source": "vendored",
+      "sourceType": "local",
+      "path": ".agents/skills/playwright-cli"
+    }
+  }
+}
