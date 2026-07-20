@@ -10,11 +10,14 @@ via `skills-lock.json` (reproducible install). Symlinked as `skills -> .agents/s
 | `find-docs` | vendored | Library/framework docs lookup |
 | `playwriter` | github `remorses/playwriter` | Browser automation via your Chrome |
 | `circleback` | vendored | Meeting notes / follow-ups |
+| `gws-sheets` (+ read/append) | github `googleworkspace/cli` | Google Sheets |
+| `gws-docs` (+ write) | github `googleworkspace/cli` | Google Docs |
+| `gws-gmail` (+ send/read/reply/forward/triage/watch) | github `googleworkspace/cli` | Gmail |
 
 ## Dropped (intentionally)
 
-`gws-gmail`, `gws-drive` (not working yet), `yc-cli`, `remarkable-ssh-sync`,
-`playwright-cli`. Restore from git history if needed.
+`gws-drive` (Drive — add if needed), `yc-cli`, `remarkable-ssh-sync`,
+`playwright-cli`. Restore from git history if wanted.
 
 ## Install
 

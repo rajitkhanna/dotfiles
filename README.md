@@ -90,12 +90,15 @@ Only the skills I actually use are tracked (the rest are intentionally dropped):
 | `find-docs` | vendored | Library/framework docs lookup |
 | `playwriter` | github `remorses/playwriter` | Browser automation via your Chrome |
 | `circleback` | vendored | Meeting notes / follow-ups (via `@circleback/cli`) |
+| `gws-sheets` / `gws-sheets-read` / `gws-sheets-append` | github `googleworkspace/cli` | Google Sheets read/write |
+| `gws-docs` / `gws-docs-write` | github `googleworkspace/cli` | Google Docs read/write |
+| `gws-gmail` (+ send/read/reply/forward/triage/watch) | github `googleworkspace/cli` | Gmail via `gws` CLI |
 
 See [SKILLS.md](SKILLS.md). Vendored under `.agents/skills/`, tracked by
 `skills-lock.json`, symlinked as `skills`.
 
-> gws-gmail/gws-drive, yc-cli, remarkable-ssh-sync, playwright-cli were removed
-> (not working / not needed). Re-add from `skills-lock.json` history if wanted.
+> gws-drive (Drive) was left out — add from `googleworkspace/cli` if you need it.
+> yc-cli, remarkable-ssh-sync, playwright-cli were removed (not needed).
 
 ## Credits
 

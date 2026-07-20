@@ -15,6 +15,90 @@
       "source": "vendored",
       "sourceType": "local",
       "path": ".agents/skills/circleback"
+    },
+    "gws-shared": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-shared"
+    },
+    "gws-sheets": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-sheets"
+    },
+    "gws-sheets-read": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-sheets-read"
+    },
+    "gws-sheets-append": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-sheets-append"
+    },
+    "gws-docs": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-docs"
+    },
+    "gws-docs-write": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-docs-write"
+    },
+    "gws-gmail": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail"
+    },
+    "gws-gmail-send": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail-send"
+    },
+    "gws-gmail-read": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail-read"
+    },
+    "gws-gmail-reply": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail-reply"
+    },
+    "gws-gmail-reply-all": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail-reply-all"
+    },
+    "gws-gmail-forward": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail-forward"
+    },
+    "gws-gmail-triage": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail-triage"
+    },
+    "gws-gmail-watch": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-gmail-watch"
     }
   }
 }
