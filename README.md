@@ -93,12 +93,46 @@ Only the skills I actually use are tracked (the rest are intentionally dropped):
 | `gws-sheets` / `gws-sheets-read` / `gws-sheets-append` | github `googleworkspace/cli` | Google Sheets read/write |
 | `gws-docs` / `gws-docs-write` | github `googleworkspace/cli` | Google Docs read/write |
 | `gws-gmail` (+ send/read/reply/forward/triage/watch) | github `googleworkspace/cli` | Gmail via `gws` CLI |
+| `gws-drive` / `gws-drive-upload` | github `googleworkspace/cli` | Google Drive files/folders |
 
 See [SKILLS.md](SKILLS.md). Vendored under `.agents/skills/`, tracked by
 `skills-lock.json`, symlinked as `skills`.
 
 > gws-drive (Drive) was left out — add from `googleworkspace/cli` if you need it.
 > yc-cli, remarkable-ssh-sync, playwright-cli were removed (not needed).
+
+## Google Workspace (`gws`)
+
+`gws` is the Google Workspace CLI that powers the `gws-*` skills (Gmail, Drive,
+Sheets, Docs, Calendar, …). `bootstrap.sh` installs it automatically
+(`npm i -g @googleworkspace/cli`, or `brew install googleworkspace-cli` on macOS).
+Verify:
+
+```bash
+command -v gws && gws --version
+```
+
+### Authenticate (manual — needs a browser + Google OAuth)
+
+Auth can't be automated, so do this once per machine after bootstrap:
+
+```bash
+gws auth login          # opens browser, completes Google OAuth
+gws auth setup          # (optional) create/configure the GCP project + credentials
+# verify:
+gws gmail users getProfile --params '{"userId":"me"}'
+```
+
+> Headless / SSH server (e.g. the hermes droplet): run `gws auth login` from a
+> machine with a browser using SSH forwarding, or copy the resulting token
+> store (`~/.config/gws/` or your OS keyring) over. The CLI prints the exact
+> callback URL if it can't open a browser.
+
+### Skills
+
+The `gws-*` skills are vendored under `.agents/skills/` and tracked in
+`skills-lock.json` (source `googleworkspace/cli`). They expect `gws` on `$PATH`
+and read `gws-shared/SKILL.md` for auth + global flags.
 
 ## Credits
 

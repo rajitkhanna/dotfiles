@@ -13,11 +13,11 @@ via `skills-lock.json` (reproducible install). Symlinked as `skills -> .agents/s
 | `gws-sheets` (+ read/append) | github `googleworkspace/cli` | Google Sheets |
 | `gws-docs` (+ write) | github `googleworkspace/cli` | Google Docs |
 | `gws-gmail` (+ send/read/reply/forward/triage/watch) | github `googleworkspace/cli` | Gmail |
+| `gws-drive` (+ upload) | github `googleworkspace/cli` | Google Drive |
 
 ## Dropped (intentionally)
 
-`gws-drive` (Drive — add if needed), `yc-cli`, `remarkable-ssh-sync`,
-`playwright-cli`. Restore from git history if wanted.
+`yc-cli`, `remarkable-ssh-sync`, `playwright-cli`. Restore from git history if wanted.
 
 ## Install
 

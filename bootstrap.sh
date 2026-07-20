@@ -82,6 +82,14 @@ if [[ "$DO_TOOLS" -eq 1 ]]; then
       pkg-config libssl-dev
     # powerlevel10k + zsh plugins
     brew install powerlevel10k
+
+    # gws — Google Workspace CLI.
+    if ! command -v gws >/dev/null 2>&1; then
+      log "installing gws (Google Workspace CLI)"
+      npm install -g @googleworkspace/cli 2>/dev/null || \
+        brew install googleworkspace-cli 2>/dev/null || \
+        warn "gws install failed; install manually: npm i -g @googleworkspace/cli"
+    fi
     brew install zsh-autosuggestions zsh-syntax-highlighting
 
   else
@@ -94,6 +102,13 @@ if [[ "$DO_TOOLS" -eq 1 ]]; then
       ripgrep batcat fd-find fzf eza git-delta zoxide jq htop ncdu \
       python3 python3-pip python3-venv rclone lua5.1 luajit \
       ca-certificates gnupg2 fonts-noto-color-emoji apt-transport-https
+
+    # gws — Google Workspace CLI (gmail, drive, sheets, docs, calendar, ...).
+    if ! command -v gws >/dev/null 2>&1; then
+      log "installing gws (Google Workspace CLI)"
+      npm install -g @googleworkspace/cli 2>/dev/null || \
+        warn "gws install failed (network?); install manually: npm i -g @googleworkspace/cli"
+    fi
 
     # Ubuntu renames bat/fd — normalize binary names.
     sudo ln -sf /usr/bin/batcat /usr/local/bin/bat
@@ -150,7 +165,7 @@ if [[ "$DO_TOOLS" -eq 1 ]]; then
   # npm globals (openCode CLI, ctx7 docs, vercel, circleback CLI).
   if command -v npm >/dev/null 2>&1; then
     log "installing npm globals"
-    npm install -g opencode-ai ctx7 vercel @circleback/cli 2>/dev/null || warn "npm global install failed (network?)"
+    npm install -g opencode-ai ctx7 vercel @circleback/cli @googleworkspace/cli 2>/dev/null || warn "npm global install failed (network?)"
   fi
 
   # fzf-git.sh key bindings.
@@ -253,6 +268,18 @@ if [[ "$DO_SKILLS" -eq 1 ]]; then
     warn "opencode CLI not found; skills are vendored at .agents/skills (install opencode-ai via npm -g)"
   fi
   ok "skills ready at $SKILLS_DIR"
+fi
+
+# =============================================================================
+# 4. POST-INSTALL: gws auth (manual — needs a browser + Google OAuth)
+# =============================================================================
+if command -v gws >/dev/null 2>&1; then
+  if ! gws gmail users getProfile --params '{"userId":"me"}' >/dev/null 2>&1; then
+    warn "gws is installed but NOT authenticated. Run:  gws auth login"
+    warn "Then verify:  gws gmail users getProfile --params '{\"userId\":\"me\"}'"
+  else
+    ok "gws authenticated"
+  fi
 fi
 
 echo -e "\n${c_g}bootstrap complete.${c_n} restart your shell (or: exec zsh) to apply."

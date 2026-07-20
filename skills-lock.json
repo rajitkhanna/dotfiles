@@ -99,6 +99,18 @@
       "ref": "main",
       "sourceType": "github",
       "path": ".agents/skills/gws-gmail-watch"
+    },
+    "gws-drive": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-drive"
+    },
+    "gws-drive-upload": {
+      "source": "googleworkspace/cli",
+      "ref": "main",
+      "sourceType": "github",
+      "path": ".agents/skills/gws-drive-upload"
     }
   }
 }
