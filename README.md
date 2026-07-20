@@ -112,21 +112,38 @@ Verify:
 command -v gws && gws --version
 ```
 
-### Authenticate (manual — needs a browser + Google OAuth)
+### Authenticate
 
-Auth can't be automated, so do this once per machine after bootstrap:
+`gws` uses Google OAuth2. The interactive browser flow runs **once**; after
+that a long-lived **refresh token** keeps it working with no browser.
 
+**Interactive (Mac / desktop):**
 ```bash
 gws auth login          # opens browser, completes Google OAuth
 gws auth setup          # (optional) create/configure the GCP project + credentials
-# verify:
-gws gmail users getProfile --params '{"userId":"me"}'
+gws gmail users getProfile --params '{"userId":"me"}'   # verify
 ```
 
-> Headless / SSH server (e.g. the hermes droplet): run `gws auth login` from a
-> machine with a browser using SSH forwarding, or copy the resulting token
-> store (`~/.config/gws/` or your OS keyring) over. The CLI prints the exact
-> callback URL if it can't open a browser.
+**Headless / SSH server (e.g. the hermes droplet) — no browser needed:**
+Export the reusable credential from a machine that's already authed, then copy
+it over. `gws auth export --unmasked` prints a standard `authorized_user` JSON
+(`client_id` + `client_secret` + `refresh_token`) — the refresh token is
+long-lived.
+
+```bash
+# 1) on your Mac (already authed):
+gws auth export --unmasked > ~/gws-creds.json
+
+# 2) copy to the server:
+scp ~/gws-creds.json root@hermes:/root/.config/gws/credentials.json
+
+# 3) on the server:
+gws auth status         # shows has_refresh_token: true, no browser required
+```
+
+> Security: `gws-creds.json` is a live credential — never commit it to the repo
+> or paste it into chat. It lives only in `~/.config/gws/credentials.json` on
+> each machine. `gws auth logout` revokes it.
 
 ### Skills
 

@@ -275,8 +275,10 @@ fi
 # =============================================================================
 if command -v gws >/dev/null 2>&1; then
   if ! gws gmail users getProfile --params '{"userId":"me"}' >/dev/null 2>&1; then
-    warn "gws is installed but NOT authenticated. Run:  gws auth login"
-    warn "Then verify:  gws gmail users getProfile --params '{\"userId\":\"me\"}'"
+    warn "gws is installed but NOT authenticated."
+    warn "Desktop:   gws auth login"
+    warn "Headless:  copy credentials.json from an authed machine -> ~/.config/gws/credentials.json"
+    warn "           (export with: gws auth export --unmasked)"
   else
     ok "gws authenticated"
   fi
