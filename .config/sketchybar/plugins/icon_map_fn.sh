@@ -10,7 +10,7 @@ function icon_map() {
   "VMware Fusion")
     icon_result=":vmware_fusion:"
     ;;
-  "Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "终端" | "WezTerm" | "Claude")
+  "Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "终端" | "WezTerm" | "Claude" | "Hermes")
     icon_result=":terminal:"
     ;;
   "Microsoft To Do" | "Things")
@@ -139,7 +139,7 @@ function icon_map() {
   "Jellyfin Media Player")
     icon_result=":jellyfin:"
     ;;
-  "Code" | "Code - Insiders" | "Cursor")
+  "Code" | "Code - Insiders" | "Cursor" | "Superset")
     icon_result=":code:"
     ;;
   "Linear")
