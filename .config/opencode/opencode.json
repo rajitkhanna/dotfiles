@@ -1,5 +1,53 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "prism/deepseek-v4.1-flash",
+  "small_model": "prism/deepseek-v4.1-flash",
+  "provider": {
+    "prism": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Prism",
+      "options": {
+        "baseURL": "https://api.prisminference.com/v1"
+      },
+      "models": {
+        "deepseek-v4.1-flash": {
+          "name": "DeepSeek-V4.1-Flash",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "cost": {
+            "input": 0.3,
+            "output": 1.2,
+            "cache_read": 0.07,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 384000
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek-V4-Flash",
+          "reasoning": true,
+          "tool_call": true,
+          "cost": {
+            "input": 0.14,
+            "output": 0.28,
+            "cache_read": 0.07,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 384000
+          }
+        }
+      }
+    }
+  },
   "mcp": {
     "playwriter": {
       "type": "local",
