@@ -96,7 +96,9 @@
   "permission": {
     "external_directory": {
       "~/Github/**": "allow",
-      "~/tmp/**": "allow"
+      "/tmp/**": "allow",
+      "/private/tmp/**": "allow",
+      "~/dotfiles/**": "allow"
     }
   },
   "plugin": [
