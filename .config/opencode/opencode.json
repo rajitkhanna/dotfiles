@@ -46,6 +46,132 @@
           }
         }
       }
+    },
+    "wafer.ai": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Wafer",
+      "options": {
+        "baseURL": "https://pass.wafer.ai/v1"
+      },
+      "models": {
+        "GLM-5.2": {
+          "name": "GLM-5.2",
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "cost": {
+            "input": 1.4,
+            "output": 4.4,
+            "cache_read": 0.26,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          }
+        },
+        "GLM-5.3": {
+          "name": "GLM-5.3",
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "cost": {
+            "input": 1.19,
+            "output": 4.4,
+            "cache_read": 0.26,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          }
+        },
+        "DeepSeek-V4.1-Flash": {
+          "name": "DeepSeek-V4.1-Flash",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "cost": {
+            "input": 0.2,
+            "output": 0.6,
+            "cache_read": 0.01,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          }
+        },
+        "Kimi-K3": {
+          "name": "Kimi-K3",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "cost": {
+            "input": 2.5,
+            "output": 10.95,
+            "cache_read": 0.25,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          }
+        },
+        "GLM-5.3-Flash": {
+          "name": "GLM-5.3-Flash",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "cost": {
+            "input": 0.1,
+            "output": 0.35,
+            "cache_read": 0.02,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          }
+        },
+        "DeepSeek-V4-Flash-0731-Fast": {
+          "name": "DeepSeek-V4-Flash-0731-Fast",
+          "reasoning": true,
+          "tool_call": true,
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "cost": {
+            "input": 0.1,
+            "output": 0.25,
+            "cache_read": 0.05,
+            "cache_write": 0
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          }
+        }
+      }
     }
   },
   "mcp": {
@@ -98,10 +224,9 @@
       "~/Github/**": "allow",
       "/tmp/**": "allow",
       "/private/tmp/**": "allow",
-      "~/dotfiles/**": "allow"
+      "~/dotfiles/**": "allow",
+      "~/Dropbox/**": "allow"
     }
   },
-  "plugin": [
-    "@honcho-ai/opencode-honcho"
-  ]
+  "plugins": ["@honcho-ai/opencode-honcho"]
 }
