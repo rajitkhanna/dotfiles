@@ -175,33 +175,35 @@
     }
   },
   "mcp": {
-    "playwriter": {
-      "type": "local",
-      "command": ["npx", "-y", "playwriter@latest"],
-      "enabled": false
-    },
-    "remarkable": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "--with",
-        "rmc",
-        "--with",
-        "cairosvg",
-        "remarkable-mcp",
-        "--ssh"
-      ],
-      "environment": {
-        "REMARKABLE_SSH_HOST": "remarkable",
-        "REMARKABLE_OCR_BACKEND": "google",
-        "GOOGLE_VISION_API_KEY": "AIzaSyCZ3jrEHjdqb38THIF_CZwptQjhYAsUIfc"
+    "servers": {
+      "playwriter": {
+        "type": "local",
+        "command": ["npx", "-y", "playwriter@latest"],
+        "disabled": true
       },
-      "enabled": false
-    },
-    "executor": {
-      "type": "remote",
-      "url": "https://executor.sh/rajit-khanna-s-organization/mcp",
-      "enabled": true
+      "remarkable": {
+        "type": "local",
+        "command": [
+          "uvx",
+          "--with",
+          "rmc",
+          "--with",
+          "cairosvg",
+          "remarkable-mcp",
+          "--ssh"
+        ],
+        "environment": {
+          "REMARKABLE_SSH_HOST": "remarkable",
+          "REMARKABLE_OCR_BACKEND": "google",
+          "GOOGLE_VISION_API_KEY": "AIzaSyCZ3jrEHjdqb38THIF_CZwptQjhYAsUIfc"
+        },
+        "disabled": true
+      },
+      "executor": {
+        "type": "remote",
+        "url": "https://executor.sh/rajit-khanna-s-organization/mcp",
+        "codemode": false
+      }
     }
   },
   "instructions": [
