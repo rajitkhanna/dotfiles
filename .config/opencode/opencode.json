@@ -221,14 +221,13 @@
       "extensions": [".js", ".ts", ".jsx", ".tsx"]
     }
   },
-  "permission": {
-    "external_directory": {
-      "~/Github/**": "allow",
-      "/tmp/**": "allow",
-      "/private/tmp/**": "allow",
-      "~/dotfiles/**": "allow",
-      "~/Dropbox/**": "allow"
-    }
-  },
+  "permissions": [
+    { "action": "external_directory", "resource": "~/Github/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/private/tmp/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "~/dotfiles/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "~/Dropbox/*", "effect": "allow" },
+    { "action": "execute", "resource": "*", "effect": "deny" }
+  ],
   "plugins": ["@honcho-ai/opencode-honcho"]
 }
