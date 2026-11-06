@@ -60,17 +60,18 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 
 # --- move window to workspace (was ctrl+alt-1..7 -> yabai window --space N) ---
-alt-ctrl-1 = 'move-node-to-workspace 1'
-alt-ctrl-2 = 'move-node-to-workspace 2'
-alt-ctrl-3 = 'move-node-to-workspace 3'
-alt-ctrl-4 = 'move-node-to-workspace 4'
-alt-ctrl-5 = 'move-node-to-workspace 5'
-alt-ctrl-6 = 'move-node-to-workspace 6'
-alt-ctrl-7 = 'move-node-to-workspace 7'
+# --focus-follows-window: the workspace follows the window, so it doesn't just vanish
+alt-ctrl-1 = 'move-node-to-workspace --focus-follows-window 1'
+alt-ctrl-2 = 'move-node-to-workspace --focus-follows-window 2'
+alt-ctrl-3 = 'move-node-to-workspace --focus-follows-window 3'
+alt-ctrl-4 = 'move-node-to-workspace --focus-follows-window 4'
+alt-ctrl-5 = 'move-node-to-workspace --focus-follows-window 5'
+alt-ctrl-6 = 'move-node-to-workspace --focus-follows-window 6'
+alt-ctrl-7 = 'move-node-to-workspace --focus-follows-window 7'
 
 # --- prev/next workspace (was shift+alt-p/n -> yabai window --space prev/next) ---
-alt-shift-p = 'move-node-to-workspace prev'
-alt-shift-n = 'move-node-to-workspace next'
+alt-shift-p = 'move-node-to-workspace --focus-follows-window prev'
+alt-shift-n = 'move-node-to-workspace --focus-follows-window next'
 alt-ctrl-p = 'workspace prev'
 alt-ctrl-n = 'workspace next'
 
