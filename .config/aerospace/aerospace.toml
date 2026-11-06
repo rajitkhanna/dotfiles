@@ -1,0 +1,140 @@
+# AeroSpace configuration
+# Migrated 2026-11-05 from yabai + skhd (macOS 27.2 broke yabai's scripting addition)
+# Binding map is 1:1 with the old ~/.config/skhd/skhdrc where an equivalent exists.
+# Workspace numbers mirror the old macOS Space numbers so muscle memory carries over.
+
+start-at-login = true
+after-login-command = []
+after-startup-command = []
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 24
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+key-mapping.preset = 'qwerty'
+
+# Was `yabai -m config mouse_follows_focus on`
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = 'move-mouse window-lazy-center'
+
+# Old yabai paddings: 12px everywhere, 32px reserved for sketchybar.
+# sketchybar is actually 37px tall and the macOS menu bar is hidden,
+# so outer.top clears the bar plus the usual 12px gap.
+[gaps]
+inner.horizontal = 12
+inner.vertical = 12
+outer.left = 12
+outer.right = 12
+outer.bottom = 12
+outer.top = 49
+
+[mode.main.binding]
+
+# --- focus (was alt-hjkl -> yabai window --focus) ---
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# --- swap (was shift+alt-hjkl -> yabai window --swap) ---
+alt-shift-h = 'swap left'
+alt-shift-j = 'swap down'
+alt-shift-k = 'swap up'
+alt-shift-l = 'swap right'
+
+# --- warp (was ctrl+alt-hjkl -> yabai window --warp); AeroSpace's closest analogue ---
+alt-ctrl-h = 'join-with left'
+alt-ctrl-j = 'join-with down'
+alt-ctrl-k = 'join-with up'
+alt-ctrl-l = 'join-with right'
+
+# --- workspace focus (new: yabai never had this, you used native ctrl+arrow) ---
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+
+# --- move window to workspace (was ctrl+alt-1..7 -> yabai window --space N) ---
+alt-ctrl-1 = 'move-node-to-workspace 1'
+alt-ctrl-2 = 'move-node-to-workspace 2'
+alt-ctrl-3 = 'move-node-to-workspace 3'
+alt-ctrl-4 = 'move-node-to-workspace 4'
+alt-ctrl-5 = 'move-node-to-workspace 5'
+alt-ctrl-6 = 'move-node-to-workspace 6'
+alt-ctrl-7 = 'move-node-to-workspace 7'
+
+# --- prev/next workspace (was shift+alt-p/n -> yabai window --space prev/next) ---
+alt-shift-p = 'move-node-to-workspace prev'
+alt-shift-n = 'move-node-to-workspace next'
+alt-ctrl-p = 'workspace prev'
+alt-ctrl-n = 'workspace next'
+
+# --- displays (was alt-w/e focus, ctrl+alt-w/e move window) ---
+alt-w = 'focus-monitor left'
+alt-e = 'focus-monitor right'
+alt-ctrl-w = 'move-node-to-monitor --focus-follows-window left'
+alt-ctrl-e = 'move-node-to-monitor --focus-follows-window right'
+
+# --- layout ---
+alt-shift-t = 'layout floating tiling'        # was yabai window --toggle float
+alt-shift-m = 'fullscreen'                    # was yabai window --toggle zoom-fullscreen
+alt-shift-b = 'balance-sizes'                 # was yabai space --balance
+alt-shift-r = 'layout tiles horizontal vertical'   # nearest thing to space --rotate
+alt-shift-y = 'layout accordion horizontal vertical' # nearest thing to space --mirror y
+alt-shift-x = 'flatten-workspace-tree'        # nearest thing to space --mirror x (reset tree)
+alt-shift-f = 'layout tiles accordion'        # tiles <-> accordion
+
+# --- misc ---
+alt-shift-q = 'close'
+alt-ctrl-r = 'mode resize'                    # new: you had no resize bindings before
+alt-ctrl-semicolon = 'mode service'
+alt-slash = 'layout tiles accordion'          # keep AeroSpace defaults you may reach for
+alt-comma = 'layout accordion horizontal vertical'
+
+# --- resize mode (new) ---
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+b = 'balance-sizes'
+esc = 'mode main'
+enter = 'mode main'
+
+# --- service mode ---
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['reload-config', 'mode main']
+f = ['flatten-workspace-tree', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# --- window routing: mirrors the old macOS Space layout ---
+[[on-window-detected]]
+if.app-id = 'com.cron.electron'
+run = 'move-node-to-workspace 2'    # Notion Calendar
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.superhuman.electron'
+run = 'move-node-to-workspace 6'
+
+# VoiceOS dictation panels are floating utility windows, not tiled content
+[[on-window-detected]]
+if.app-id = 'com.voiceos.app'
+run = 'layout floating'
