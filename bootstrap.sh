@@ -210,6 +210,12 @@ if [[ "$DO_DOTFILES" -eq 1 ]]; then
     link "$REPO_ROOT/AGENTS.md" "$HOME/AGENTS.md"
     # opencode skills symlink (skills -> .agents/skills)
     link "$REPO_ROOT/.agents" "$HOME/.agents"
+    # QMK keymap (Keebio Iris rev7) into qmk_firmware checkout.
+    # Same source the `stow -d ~/dotfiles/stow -t ~ qmk` package links.
+    if [[ -d "$HOME/qmk_firmware/keyboards/keebio/iris/keymaps" ]]; then
+      link "$REPO_ROOT/stow/qmk/qmk_firmware/keyboards/keebio/iris/keymaps/rajit" \
+        "$HOME/qmk_firmware/keyboards/keebio/iris/keymaps/rajit"
+    fi
   else
     # Linux/droplet layout: XDG_CONFIG_HOME points at repo .config.
     link "$REPO_ROOT/host/tmux.conf.droplet" "$HOME/.tmux.conf"
