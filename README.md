@@ -2,7 +2,7 @@
 
 One-command environment bootstrap for a new machine — CLI toolchain, agent
 skills, fonts, and all configs (neovim, yazi, tmux, wezterm, sketchybar,
-aerospace, opencode, lazygit, gh, etc.).
+opencode, lazygit, gh, etc.).
 
 Heavily modeled on [Josean Martinez's dev-environment-files](https://github.com/josean-dev/dev-environment-files)
 — same structure and bootstrap approach. Go star his repo.

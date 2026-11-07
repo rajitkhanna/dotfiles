@@ -83,13 +83,6 @@ if [[ "$DO_TOOLS" -eq 1 ]]; then
     # powerlevel10k + zsh plugins
     brew install powerlevel10k
 
-    # AeroSpace — i3-like tiling WM (replaced yabai + skhd in Nov 2026:
-    # yabai's scripting addition broke on macOS 27 and needs SIP disabled)
-    if ! command -v aerospace >/dev/null 2>&1; then
-      brew install --cask nikitabobko/tap/aerospace 2>/dev/null || \
-        warn "AeroSpace install failed; install manually: brew install --cask nikitabobko/tap/aerospace"
-    fi
-
     # gws — Google Workspace CLI.
     if ! command -v gws >/dev/null 2>&1; then
       log "installing gws (Google Workspace CLI)"
@@ -204,7 +197,7 @@ if [[ "$DO_DOTFILES" -eq 1 ]]; then
     link "$REPO_ROOT/.zshrc"          "$HOME/.zshrc"
     link "$REPO_ROOT/.tmux.conf"      "$HOME/.tmux.conf"
     link "$REPO_ROOT/.wezterm.lua"    "$HOME/.wezterm.lua"
-    for d in nvim yazi sketchybar aerospace opencode lazygit gh ngrok; do
+    for d in nvim yazi sketchybar opencode lazygit gh ngrok; do
       link "$REPO_ROOT/.config/$d" "$HOME/.config/$d"
     done
     link "$REPO_ROOT/AGENTS.md" "$HOME/AGENTS.md"
